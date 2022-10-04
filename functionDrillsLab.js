@@ -269,7 +269,20 @@ let bigOrSmallArray = [1,101, 102, 2, 103, 4, 5, 6, 107]
 */
 
 //CODE HERE
+function bigOrSmall (arr) {
+    let answers = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > 100) {
+            answers.push('big');
+        } else if (arr[i] < 100) {
+            answers.push('small');
+        }
+    }
+    return answers;
+}
 
+let arrayEvaluator = bigOrSmall(bigOrSmallArray);
+// console.log(arrayEvaluator)
 
 ////////////////// PROBLEM 16 ////////////////////
 let contestants = ['Katniss', 'Peeta', 'Fox-face', 'Glimmer', 'Cato', 'Rue', 'Thresh', 'Clove', 'Marvel']
@@ -280,7 +293,17 @@ let loser = 'Glimmer'
 */
 
 //CODE HERE
+const theEliminator = (arr, clown) => {
+  for (let i = 0; i < arr.length; i++) {
+      if ( arr[i] === clown) {
+          arr.splice(3, 1)
+      }
+  }
+  return contestants
+};
 
+let newPeople = theEliminator(contestants, loser);
+console.log(newPeople)
 
 ////////////////// PROBLEM 17 ////////////////////
 let sampleString = "Hi, my name is Kylo."
@@ -290,6 +313,13 @@ let sampleString = "Hi, my name is Kylo."
 */
 
 //CODE HERE
+function upperCase (string) {
+ let answer = string.toUpperCase();
+ console.log(answer)
+}
+
+upperCase(sampleString)
+
 
 
 ////////////////// PROBLEM 18 ////////////////////
@@ -302,6 +332,18 @@ let sampleString = "Hi, my name is Kylo."
   If it does, return 'email verified' and if doesn't, 
   return 'must provide a valid email address'
 */
+const emailCheck = (email) => {
+  let newEmail = String(email);
+       newEmail = newEmail.trim();
+      // console.log(newEmail)
+    if (newEmail.includes('@')) {
+      return 'email verified';
+    } else { 
+      return 'must provide a valid email address';
+    }
+}
+let newSum = emailCheck('  marcusjohnson88.mj@gmail.com  ')
+console.log(newSum)
 
 ////////////////// PROBLEM 19 ////////////////////
 /*
@@ -310,16 +352,37 @@ let sampleString = "Hi, my name is Kylo."
 */
 
 //CODE HERE
+let chocolateFrog = 3;
+function maloneBrown (gold) {
+  let total = 0;
+  // return Math.floor(gold / 3);
+  // either option works. the top one is just more straightforward. The while loop works because you're running the loop while the amount of gold is higher the 0. So until you run out of gold it will run.
+  while (gold > 0)  {
+    total += 1; // It adds 1 to the total which is the amount of frogs you have purchased.
+    gold -= 3; // this will subtract the gold each iteration and until the while loops stops. The # 3 is the amount of gold the frogs cost. 
+  }
+  return total
+}
 
-
+let totalFrogs = maloneBrown(12);
+console.log(totalFrogs)
 ////////////////// PROBLEM 20 ////////////////////
 /*
   You might have noticed a slight bug in the previous problem. If you were to pass in 4 gold, the function would return to you 1.3333... However, you can't really go to a store and by 1.333 products. You would just be able to purchase 1 product. Re-write the function you used in the previous problem (give it the same name, just add a 2 to the end of it) that fixes this bug. Invoke the function and store the returned value to a variable called `totalFrogs2`.
 */
 
 //CODE HERE
-
-
+function maloneBrown (gold) {
+  // let total = 0;
+  return Math.floor(gold / 3);
+  // while (gold > 0)  {
+  //   total += 1; 
+  //   gold -= 3; 
+  // }
+  // return total
+}
+let totalFrogs2 = maloneBrown(12);
+console.log(totalFrogs2)
 ////////////////// PROBLEM 21 ////////////////////
 let sampleArray = [0,1,2,3,4,7,5,6,8,9]
 /*
@@ -327,7 +390,19 @@ let sampleArray = [0,1,2,3,4,7,5,6,8,9]
 */
 
 //CODE HERE
+const ascendingFunc = (arr) => {
+  for (let i = 0;i < arr.length; i++) {
+  if (i != 0 && arr[i] < arr[i - 1]) {
+    return false;
+  } 
+}
+return true; 
+}
 
+// it checks to see if the current value is less than the previous one. If it is then it is not in ascending order. the i != 0 is just to help skip the first iteration which is 0. 
+
+let arrayIsAscending = ascendingFunc(sampleArray);
+console.log(arrayIsAscending);
 
 ////////////////// PROBLEM 22 ////////////////////
 
@@ -351,13 +426,13 @@ function pond() {
 */
 
 //This array should contain the variable names (as strings) accessible in the global scope.
-let globalScope = []
+let globalScope = ['cute'];
 
 //This array should contain the variable names (as strings) accessible in the bathroom function.
-let bathroomScope = []
+let bathroomScope = ['squeaky', 'cute']
 
 //This array should contain the variable names (as strings) accessible in the bathtub function.
-let bathtubScope = []
+let bathtubScope = ['nautical', 'squeaky', 'cute']
 
 //This array should contain the variable names (as strings) accessible in the pond function.
-let pondScope = []
+let pondScope = ['fluffy','cute' ]
